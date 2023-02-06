@@ -7,7 +7,6 @@ import RecentSong from "@/components/RecentSong";
 
 import { getSongs } from "../features/songsSlice";
 import Spinner from "@/components/Spinner";
-// import { data } from "@/constants";
 
 export default function Home() {
     const songs = useSelector((state) => state.songs);
