@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -39,6 +40,9 @@ export default function SongDetails() {
 
     return (
         <>
+            <Head>
+                <title>smile-songs | song</title>
+            </Head>
             {song && (
                 <div className="min-h-[85vh] grid items-center grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="flex bg-black items-center justify-center rounded-3xl w-full h-72 opacity-75 hover:opacity-100 transition-all duration-300 ease-in-out">

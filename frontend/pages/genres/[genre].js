@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +21,9 @@ export default function SongDetails() {
 
     return (
         <>
+            <Head>
+                <title>smile-songs | {genre.toLowerCase()} songs</title>
+            </Head>
             <h2 className="py-8 text-center text-3xl">{genre} Songs</h2>
             <div className="">
                 {songsByGenre ? (
