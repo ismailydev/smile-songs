@@ -1,15 +1,16 @@
 import { genres } from "@/constants";
-import { addSong, updateSong } from "@/features/songsSlice";
+import { addSong, getSong, updateSong } from "@/features/songsSlice";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function AddNew() {
     const router = useRouter();
+    const [songDetail, setSongDetail] = useState({});
     const { id } = router.query;
-    const [song, setSong] = useState({});
+    const song = useSelector((state) => state.song);
 
     const [formData, setFormData] = useState({
         title: "",
@@ -18,15 +19,16 @@ export default function AddNew() {
         genre: "",
     });
 
-    const fetchSong = async () => {
-        const res = await fetch(`http://localhost:8000/api/songs/${id}`);
-        const data = await res.json();
-        setSong(data);
-    };
-
     useEffect(() => {
         if (id) {
-            fetchSong();
+            dispatch(getSong(id));
+            setSongDetail(song);
+        }
+    }, [id]);
+
+    useEffect(() => {
+        setFormData({ title: "", artist: "", album: "", genre: "" });
+        if (id) {
             setFormData({
                 title: song.title,
                 artist: song.artist,
@@ -49,12 +51,13 @@ export default function AddNew() {
             };
             dispatch(updateSong({ ...updatedFormData, id }));
             toast.success("Song updated successfully");
-            router.replace(`/songs/${id}`);
+            router.push(`/songs/${id}`);
         } else {
             dispatch(addSong(formData));
             toast.success("Song added successfully");
-            router.replace("/");
+            router.push("/");
         }
+        setFormData({ title: "", artist: "", album: "", genre: "" });
     };
 
     return (
@@ -76,7 +79,7 @@ export default function AddNew() {
                             name="title"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
                             placeholder="song title"
-                            value={formData.title || song.title}
+                            value={formData.title || songDetail?.title || ""}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -95,7 +98,7 @@ export default function AddNew() {
                             name="aritst"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
                             placeholder="song artist"
-                            value={formData.artist || song.artist}
+                            value={formData.artist || songDetail?.artist || ""}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -114,7 +117,7 @@ export default function AddNew() {
                             name="album"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
                             placeholder="song album"
-                            value={formData.album || song.album}
+                            value={formData.album || songDetail?.album || ""}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -131,7 +134,7 @@ export default function AddNew() {
                         <select
                             name="genre"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
-                            value={formData.genre || song.genre}
+                            value={formData.genre || songDetail?.genre || ""}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
