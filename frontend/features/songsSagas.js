@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLeading } from "redux-saga/effects";
 import axios from "axios";
 import {
     getSongs,
@@ -56,11 +56,11 @@ function* workOnUpdateSong({ payload }) {
 }
 
 function* songsSagas() {
-    yield takeLatest("songs/getSongs", workOnGetSongs);
-    yield takeLatest("songs/getSong", workOnGetSong);
-    yield takeLatest("songs/addSong", workOnAddSong);
-    yield takeLatest("songs/deleteSong", workOnDeleteSong);
-    yield takeLatest("songs/updateSong", workOnUpdateSong);
+    yield takeLeading("songs/getSongs", workOnGetSongs);
+    yield takeLeading("songs/getSong", workOnGetSong);
+    yield takeLeading("songs/addSong", workOnAddSong);
+    yield takeLeading("songs/deleteSong", workOnDeleteSong);
+    yield takeLeading("songs/updateSong", workOnUpdateSong);
 }
 
 export default songsSagas;
