@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useDispatch } from "react-redux";
-import { deleteSong } from "@/features/songsSlice";
-
 export default function Song({ song }) {
     const { _id: id, title, artist, album, genre } = song;
 
@@ -16,7 +13,11 @@ export default function Song({ song }) {
                             <Image
                                 src={`https://ui-avatars.com/api/?rounded=true&background=random&name=${
                                     artist.split(" ")[0]
-                                }+${artist.split(" ")[1]}`}
+                                }+${
+                                    artist.split(" ")[1]
+                                        ? artist.split(" ")[1]
+                                        : ""
+                                }`}
                                 width={100}
                                 height={100}
                                 alt={artist}
