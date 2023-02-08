@@ -22,7 +22,7 @@ export default function SongDetails() {
     return (
         <>
             <Head>
-                <title>smile-songs | {genre.toLowerCase()} songs</title>
+                <title>smile-songs | {genre} songs</title>
             </Head>
             <h2 className="py-8 text-center text-3xl">{genre} Songs</h2>
             <div className="">
