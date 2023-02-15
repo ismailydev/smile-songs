@@ -1,11 +1,16 @@
 import { genres } from "@/constants";
-import { addSong } from "@/features/songsSlice";
+import { addSong, updateSong } from "@/features/songsSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function AddNew() {
     const router = useRouter();
+    const { id } = router.query;
+    const [song, setSong] = useState({});
+
     const [formData, setFormData] = useState({
         title: "",
         artist: "",
@@ -13,17 +18,50 @@ export default function AddNew() {
         genre: "",
     });
 
+    const fetchSong = async () => {
+        const res = await fetch(`http://localhost:8000/api/songs/${id}`);
+        const data = await res.json();
+        setSong(data);
+    };
+
+    useEffect(() => {
+        if (id) {
+            fetchSong();
+            setFormData({
+                title: song.title,
+                artist: song.artist,
+                album: song.album,
+                genre: song.genre,
+            });
+        }
+    }, [id]);
+
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(addSong(formData));
-        router.replace("/");
+        if (id) {
+            const updatedFormData = {
+                title: formData.title,
+                artist: formData.artist,
+                album: formData.album,
+                genre: formData.genre,
+            };
+            dispatch(updateSong({ ...updatedFormData, id }));
+            toast.success("Song updated successfully");
+            router.replace(`/songs/${id}`);
+        } else {
+            dispatch(addSong(formData));
+            toast.success("Song added successfully");
+            router.replace("/");
+        }
     };
 
     return (
         <main className="py-4 pb-12">
-            <h2 className="py-8 text-center text-3xl">Add New Song</h2>
+            <h2 className="py-8 text-center text-3xl">
+                {!id ? "Add New Song" : "Update Song"}
+            </h2>
             <form
                 onSubmit={handleSubmit}
                 className="bg-black w-full md:w-1/2 mx-auto p-8 rounded-2xl"
@@ -38,7 +76,7 @@ export default function AddNew() {
                             name="title"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
                             placeholder="song title"
-                            value={formData.title}
+                            value={formData.title || song.title}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -57,7 +95,7 @@ export default function AddNew() {
                             name="aritst"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
                             placeholder="song artist"
-                            value={formData.artist}
+                            value={formData.artist || song.artist}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -76,7 +114,7 @@ export default function AddNew() {
                             name="album"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
                             placeholder="song album"
-                            value={formData.album}
+                            value={formData.album || song.album}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -93,7 +131,7 @@ export default function AddNew() {
                         <select
                             name="genre"
                             className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
-                            value={formData.genre}
+                            value={formData.genre || song.genre}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -115,7 +153,7 @@ export default function AddNew() {
                             type="sumbit"
                             className="w-full py-2 px-4 bg-slate-800 text-white rounded-lg"
                         >
-                            Add Song
+                            {!id ? "Add" : "Update"}
                         </button>
                     </div>
                 </div>
