@@ -20,8 +20,6 @@ function* workOnGetSongs() {
 }
 
 function* workOnGetSong({ payload }) {
-    const id = payload._id;
-    console.log(id, payload._id, typeof payload);
     try {
         const res = yield call(axios.get, `${API_URL}/${payload}`);
         yield put(getSong(res.data));
