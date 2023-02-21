@@ -8,7 +8,7 @@ import {
     updateSong,
 } from "./songsSlice";
 
-const API_URL = "http://localhost:8000/api/songs";
+const API_URL = "https://smile-songs.up.railway.app/api/songs";
 
 function* workOnGetSongs() {
     try {
