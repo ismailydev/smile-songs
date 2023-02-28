@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 
-require("./config/db")();
+const connectDB = require("./config/db");
 
 const PORT = process.env.PORT || 8000;
 
@@ -18,4 +18,6 @@ app.get("/", (req, res) => {
     );
 });
 
-app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
+connectDB().then(() => {
+    app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
+});
