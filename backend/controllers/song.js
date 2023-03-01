@@ -26,4 +26,19 @@ module.exports = {
 
         res.status(200).json(song);
     },
+    addSong: async (req, res) => {
+        const { title, artist, album, genre } = req.body;
+
+        try {
+            const song = await Song.create({
+                title,
+                artist,
+                album,
+                genre,
+            });
+            res.status(200).json(song);
+        } catch (error) {
+            return res.status(400).json({ error: error.message });
+        }
+    },
 };
