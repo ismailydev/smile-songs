@@ -9,10 +9,7 @@ const {
 
 const router = express.Router();
 
-router.get("/", getSongs);
-router.get("/:id", getSong);
-router.post("/", addSong);
-router.put("/:id", updateSong);
-router.delete("/:id", deleteSong);
+router.route("/").get(getSongs).post(addSong);
+router.route("/:id").get(getSong).put(updateSong).delete(deleteSong);
 
 module.exports = router;
