@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 8000;
 
 const app = express();
 
+app.use("/api/songs", require("./routes/song"));
+
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
