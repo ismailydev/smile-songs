@@ -1,10 +1,9 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { genres } from "@/constants";
 import { addSong, getSong, updateSong } from "@/features/songsSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function AddNew() {
@@ -52,13 +51,14 @@ export default function AddNew() {
             };
             dispatch(updateSong({ ...updatedFormData, id }));
             toast.success("Song updated successfully");
-            router.push(`/songs/${id}`);
+            // router.push(`/songs/${id}`);
         } else {
             dispatch(addSong(formData));
             toast.success("Song added successfully");
-            router.push("/");
+            // router.push("/");
         }
         setFormData({ title: "", artist: "", album: "", genre: "" });
+        router.push("/");
     };
 
     return (
