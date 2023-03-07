@@ -32,7 +32,7 @@ export default function SongDetails() {
 
     if (!song?.artist) {
         return (
-            <div className="w-full min-h-[85vh] flex items-center justify-center border border-red-500">
+            <div className="w-full min-h-[85vh] flex items-center justify-center">
                 <Spinner />
             </div>
         );
