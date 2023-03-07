@@ -7,7 +7,7 @@ export default function Song({ song }) {
     return (
         <div className="relative">
             <Link href={`/songs/${id}`}>
-                <div className="relative bg-black p-5 flex items-center justify-between rounded-3xl transition-colors duration-300 ease-in-out hover:bg-slate-300 hover:text-black cursor-pointer">
+                <div className="relative bg-slate-300/50 dark:bg-dark p-5 flex items-center justify-between rounded-3xl transition-colors duration-300 ease-in-out hover:bg-slate-300 hover:dark:bg-dark/75 hover:text-black hover:dark:text-slate-400 cursor-pointer">
                     <div className="flex gap-4 items-center">
                         <div className="w-10 h-10 flex items-center justify-center">
                             <Image
@@ -34,7 +34,7 @@ export default function Song({ song }) {
             <div className="absolute right-0 -bottom-3 flex gap-2 transition-opacity duration-300 ease-in-out">
                 <Link
                     href={`/genres/${genre}`}
-                    className="bg-slate-800 w-20 py-2 rounded-xl cursor-pointer hover:bg-slate-900 transition-colors duration-300 ease-in-out"
+                    className="bg-slate-500 dark:bg-slate-800 w-20 py-2 rounded-xl cursor-pointer hover:bg-slate-600 hover:dark:bg-slate-900 transition-colors duration-300 ease-in-out"
                 >
                     <p className="text-center text-[10px] text-slate-200 lowercase">
                         {genre}

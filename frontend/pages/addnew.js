@@ -72,7 +72,7 @@ export default function AddNew() {
                 </h2>
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-black w-full md:w-1/2 mx-auto p-8 rounded-2xl"
+                    className="bg-slate-300 dark:bg-dark w-full md:w-1/2 mx-auto p-8 rounded-2xl"
                 >
                     <div className="flex flex-col items-center">
                         <div className="flex items-center py-4">
@@ -82,7 +82,7 @@ export default function AddNew() {
                             <input
                                 type="text"
                                 name="title"
-                                className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
+                                className="outline-none text-black dark:text-white rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-300 placeholder:dark:text-dark/50"
                                 placeholder="song title"
                                 value={
                                     formData.title || songDetail?.title || ""
@@ -103,7 +103,7 @@ export default function AddNew() {
                             <input
                                 type="text"
                                 name="aritst"
-                                className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
+                                className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-300 placeholder:dark:text-dark/50"
                                 placeholder="song artist"
                                 value={
                                     formData.artist || songDetail?.artist || ""
@@ -124,7 +124,7 @@ export default function AddNew() {
                             <input
                                 type="text"
                                 name="album"
-                                className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
+                                className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-300 placeholder:dark:text-dark/50"
                                 placeholder="song album"
                                 value={
                                     formData.album || songDetail?.album || ""
@@ -144,7 +144,7 @@ export default function AddNew() {
                             </label>
                             <select
                                 name="genre"
-                                className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-500"
+                                className="outline-none text-black rounded-lg py-1.5 px-4 w-60 md:w-72 placeholder:text-slate-300 placeholder:dark:text-dark/50"
                                 value={
                                     formData.genre || songDetail?.genre || ""
                                 }

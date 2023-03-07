@@ -27,7 +27,7 @@ export default function Stats() {
             <main className="py-4 pb-12">
                 {songs ? (
                     <>
-                        <h2 className="pt-8 text-center text-3xl text-white uppercase">
+                        <h2 className="pt-8 text-center text-3xl text-black dark:text-white uppercase">
                             Stats
                         </h2>
                         {songs && (
@@ -37,34 +37,34 @@ export default function Stats() {
                                         General Stats
                                     </h3>
                                     <div className="flex gap-8">
-                                        <p className="pb-2 w-52 text-white/75">
+                                        <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                             Total number of songs:
                                         </p>
-                                        <span className="text-white">
+                                        <span className="text-black dark:text-white">
                                             {songs.length}
                                         </span>
                                     </div>
                                     <div className="flex gap-8">
-                                        <p className="pb-2 w-52 text-white/75">
+                                        <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                             Total number of artists:
                                         </p>
-                                        <span className="text-white">
+                                        <span className="text-black dark:text-white">
                                             {countTypes(songs, "artist").length}
                                         </span>
                                     </div>
                                     <div className="flex gap-8">
-                                        <p className="pb-2 w-52 text-white/75">
+                                        <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                             Total number of albums:
                                         </p>
-                                        <span className="text-white">
+                                        <span className="text-black dark:text-white">
                                             {countTypes(songs, "album").length}
                                         </span>
                                     </div>
                                     <div className="flex gap-8">
-                                        <p className="pb-2 w-52 text-white/75">
+                                        <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                             Total number of genres:
                                         </p>
-                                        <span className="text-white">
+                                        <span className="text-black dark:text-white">
                                             {countTypes(songs, "genre").length}
                                         </span>
                                     </div>
@@ -101,10 +101,10 @@ export default function Stats() {
                                             </select>
                                         </div>
                                         <div className="flex py-2 gap-8">
-                                            <p className="pb-2 w-52 text-white/75">
+                                            <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                                 Total number of songs:
                                             </p>
-                                            <span className="text-white">
+                                            <span className="text-black dark:text-white">
                                                 {count(songs, "genre", genre) ||
                                                     ""}
                                             </span>
@@ -139,10 +139,10 @@ export default function Stats() {
                                             </select>
                                         </div>
                                         <div className="flex pt-2 gap-8">
-                                            <p className="pb-2 w-52 text-white/75">
+                                            <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                                 Total number of songs:
                                             </p>
-                                            <span className="text-white">
+                                            <span className="text-black dark:text-white">
                                                 {count(
                                                     songs,
                                                     "artist",
@@ -151,10 +151,10 @@ export default function Stats() {
                                             </span>
                                         </div>
                                         <div className="flex gap-8">
-                                            <p className="pb-2 w-52 text-white/75">
+                                            <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                                 Total number of albums:
                                             </p>
-                                            <span className="text-white">
+                                            <span className="text-black dark:text-white">
                                                 {getAlbumCount(songs, artist) ||
                                                     ""}
                                             </span>
@@ -188,10 +188,10 @@ export default function Stats() {
                                             </select>
                                         </div>
                                         <div className="flex py-2 gap-8">
-                                            <p className="pb-2 w-52 text-white/75">
+                                            <p className="pb-2 w-52 text-black/75 dark:text-white/75">
                                                 Total number of songs:
                                             </p>
-                                            <span className="text-white">
+                                            <span className="text-black dark:text-white">
                                                 {count(songs, "album", album) ||
                                                     ""}
                                             </span>

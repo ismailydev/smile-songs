@@ -19,7 +19,7 @@ export default function RecentSong({ song }) {
                         alt={artist}
                     />
                 </div>
-                <p className="absolute left-0 bottom-0 text-xs bg-black rounded-r-full h-10 flex items-center pl-4 w-full">
+                <p className="absolute left-0 bottom-0 text-xs bg-slate-300 dark:bg-dark rounded-r-full h-10 flex items-center pl-4 w-full">
                     {title}
                 </p>
             </Link>

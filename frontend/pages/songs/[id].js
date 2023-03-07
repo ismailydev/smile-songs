@@ -32,7 +32,7 @@ export default function SongDetails() {
 
     if (!song?.artist) {
         return (
-            <div className="w-full min-h-[85vh] flex items-center justify-center">
+            <div className="w-full min-h-[85vh] flex items-center justify-center border border-red-500">
                 <Spinner />
             </div>
         );
@@ -45,7 +45,7 @@ export default function SongDetails() {
             </Head>
             {song && (
                 <div className="min-h-[85vh] grid items-center grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="flex bg-black items-center justify-center rounded-3xl w-full h-72 opacity-75 hover:opacity-100 transition-all duration-300 ease-in-out">
+                    <div className="flex bg-slate-300 dark:bg-dark items-center justify-center rounded-3xl w-full h-72 opacity-75 hover:opacity-100 transition-all duration-300 ease-in-out">
                         <MusicalNoteIcon className="h-40" />
                     </div>
                     <div className="relative flex flex-col gap-5 text-2xl">
@@ -77,7 +77,7 @@ export default function SongDetails() {
                             <p className="w-32 text-slate-400">Genre:</p>
                             <Link
                                 href={`/genres/${song?.genre}`}
-                                className="bg-slate-800 w-20 py-2 rounded-xl cursor-pointer hover:bg-slate-900 transition-colors duration-300 ease-in-out"
+                                className="bg-slate-500 dark:bg-slate-800 w-20 py-2 rounded-xl cursor-pointer hover:bg-slate-600 hover:dark:bg-slate-900 transition-colors duration-300 ease-in-out"
                             >
                                 <p className="text-center text-xs text-slate-200">
                                     {song?.genre}
