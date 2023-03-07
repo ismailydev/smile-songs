@@ -16,7 +16,7 @@ export default function Nav() {
     const currentTheme = theme === "system" ? systemTheme : theme;
 
     return (
-        <nav className="bg-slate-300 dark:bg-black/20">
+        <nav className="bg-slate-300 dark:bg-dark">
             <div className="max-w-5xl mx-auto flex items-center justify-between py-5 px-4 lg:px-0">
                 <Link href="/" className="font-lora">
                     smile-songs
