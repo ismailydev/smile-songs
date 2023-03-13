@@ -8,7 +8,7 @@ import {
     updateSong,
 } from "./songsSlice";
 
-const API_URL = "https://smile-songs.onrender.com//api/songs";
+const API_URL = "https://smile-songs.onrender.com/api/songs";
 
 function* workOnGetSongs() {
     try {
